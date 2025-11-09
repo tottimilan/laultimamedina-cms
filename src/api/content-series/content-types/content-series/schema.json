@@ -1,0 +1,76 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_series",
+  "info": {
+    "singularName": "content-series",
+    "pluralName": "content-serieses",
+    "displayName": "Series",
+    "description": "Series para agrupar contenido relacionado"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "scope": {
+      "type": "enumeration",
+      "enum": ["read", "watch", "listen", "learn"],
+      "required": true
+    },
+    "articles": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::article.article",
+      "mappedBy": "series"
+    },
+    "videos": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::video.video",
+      "mappedBy": "series"
+    },
+    "learn_modules": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::learn-module.learn-module",
+      "mappedBy": "series"
+    }
+  }
+}
+

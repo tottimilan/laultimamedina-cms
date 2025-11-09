@@ -1,0 +1,58 @@
+{
+  "kind": "collectionType",
+  "collectionName": "podcast_series",
+  "info": {
+    "singularName": "podcast-series",
+    "pluralName": "podcast-serieses",
+    "displayName": "Podcast Series",
+    "description": "Series de podcasts"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cover": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    },
+    "rss_url": {
+      "type": "text"
+    },
+    "episodes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::podcast-episode.podcast-episode",
+      "mappedBy": "series"
+    }
+  }
+}
+
